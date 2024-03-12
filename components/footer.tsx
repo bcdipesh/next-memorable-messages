@@ -1,8 +1,8 @@
-import Logo from "@/components/logo";
+import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Footer() {
+export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (

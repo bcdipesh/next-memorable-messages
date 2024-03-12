@@ -1,11 +1,12 @@
 import { auth } from "@/auth";
 import LogOutBtn from "@/components/auth/logout-btn";
-import Logo from "@/components/logo";
+import { UserButton } from "@/components/auth/user-btn";
+import { Logo } from "@/components/logo";
 import { ThemeToggler } from "@/components/theme-toggler";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default async function MainNav() {
+export async function MainNav() {
   const session = await auth();
 
   return (
@@ -20,7 +21,7 @@ export default async function MainNav() {
             <Button variant="ghost" asChild>
               <Link href="occasions">Occasions</Link>
             </Button>
-            <LogOutBtn />
+            <UserButton />
           </>
         ) : (
           <>

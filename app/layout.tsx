@@ -1,6 +1,6 @@
-import Footer from "@/components/footer";
-import MainNav from "@/components/main-nav";
-import ThemeProvider from "@/components/theme-provider";
+import { Footer } from "@/components/footer";
+import { MainNav } from "@/components/main-nav";
+import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
