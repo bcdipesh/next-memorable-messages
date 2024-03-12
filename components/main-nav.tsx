@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import LogOutBtn from "@/components/auth/logout-btn";
 import Logo from "@/components/logo";
+import { ThemeToggler } from "@/components/theme-toggler";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -28,6 +29,7 @@ export default async function MainNav() {
             </Button>
           </>
         )}
+        <ThemeToggler />
       </div>
     </nav>
   );

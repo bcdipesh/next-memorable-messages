@@ -4,7 +4,7 @@
  *
  * @type {string[]}
  */
-export const publicRoutes = ["/", "terms-of-service", "privacy-policy"];
+export const publicRoutes = ["/", "/terms-of-service", "/privacy-policy"];
 
 /**
  * An array of routes that are used for authentication.

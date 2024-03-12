@@ -1,5 +1,7 @@
 import Footer from "@/components/footer";
-import MainNav from "@/components/main.nav";
+import MainNav from "@/components/main-nav";
+import ThemeProvider from "@/components/theme-provider";
+import { siteConfig } from "@/config/site";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -9,11 +11,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Memorable Messages",
-    default: "Memorable Messages",
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.name,
   },
-  description:
-    "Web application that allows users to create, store, and share personalized messages by creating custom occasions.",
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -23,12 +24,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} antialiased container relative flex flex-col justify-between py-8`}
-      >
-        <MainNav />
-        {children}
-        <Footer />
+      <body>
+        <div
+          className={`${inter.className} antialiased container relative h-full flex flex-col justify-between py-8`}
+        >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <MainNav />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );
