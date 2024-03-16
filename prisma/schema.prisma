@@ -28,12 +28,13 @@ model Account {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
+  Occasion      Occasion[]
 }
 
 model VerificationToken {
@@ -42,4 +43,18 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Occasion {
+  id                  String    @id @default(cuid())
+  userId              String
+  title               String    @db.VarChar(256)
+  receiverEmail       String
+  deliveryMethod      String    @db.VarChar(64)
+  message             String
+  deliveryDateAndTime DateTime  @db.Timestamptz(6)
+  status              String    @default("pending")
+  createdAt           DateTime? @default(now()) @db.Timestamptz(6)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

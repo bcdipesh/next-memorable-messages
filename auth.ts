@@ -1,5 +1,5 @@
 import authConfig from "@/auth.config";
-import prisma from "@/lib/db";
+import { prisma } from "@/lib/db";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 
@@ -18,6 +18,18 @@ export const {
         where: { id: user.id },
         data: { emailVerified: new Date() },
       });
+    },
+  },
+  callbacks: {
+    async session({ token, session }) {
+      if (token.sub && session.user) {
+        session.user.id = token.sub;
+      }
+
+      return session;
+    },
+    async jwt({ token }) {
+      return token;
     },
   },
   adapter: PrismaAdapter(prisma),

@@ -1,5 +1,4 @@
 import { auth } from "@/auth";
-import LogOutBtn from "@/components/auth/logout-btn";
 import { UserButton } from "@/components/auth/user-btn";
 import { Logo } from "@/components/logo";
 import { ThemeToggler } from "@/components/theme-toggler";
@@ -19,7 +18,7 @@ export async function MainNav() {
               <Link href="/profile">Profile</Link>
             </Button>
             <Button variant="ghost" asChild>
-              <Link href="occasions">Occasions</Link>
+              <Link href="/occasions">Occasions</Link>
             </Button>
             <UserButton />
           </>
